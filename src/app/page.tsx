@@ -1,8 +1,8 @@
 export default function Home() {
   return (
-    <main>
-      <h1>🚀 Welcome to My Next.js Website!</h1>
-      <p>This is my first Next.js project.</p>
-    </main>
+    <div>
+      <h1>Welcome to the Broker Directory</h1>
+      <p>Find the best brokers in Mongolia.</p>
+    </div>
   );
 }
