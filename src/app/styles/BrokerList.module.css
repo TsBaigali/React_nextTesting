@@ -1,0 +1,71 @@
+/* styles/BrokerList.module.css */
+.brokerList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.brokerCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.brokerCard {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brokerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.brokerCard h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.brokerCard p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.star-rating {
+  color: #ffba00;
+}
+
+.star-rating svg {
+  margin-right: 5px;
+}
+/* For smaller screens */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .categoryList {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .brokerCards {
+    grid-template-columns: 1fr;
+  }
+}

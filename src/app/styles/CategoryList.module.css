@@ -1,0 +1,30 @@
+/* styles/CategoryList.module.css */
+.categoryList {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 20px 0;
+}
+
+.categoryCard {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  flex: 1;
+}
+
+.categoryCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.categoryCard h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
