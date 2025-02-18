@@ -1,5 +1,4 @@
- // /components/Header.tsx
- 'use client';
+'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
@@ -45,7 +44,7 @@ const styles = {
     width: '100%',
     borderBottom: '1px solid #ccc',
     padding: '10px 0',
-    boxSizing: 'border-box',
+    boxSizing: 'border-box' as 'border-box', // Correct type
   },
   container: {
     display: 'flex',
