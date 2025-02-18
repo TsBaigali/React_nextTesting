@@ -44,7 +44,7 @@ const styles = {
     width: '100%',
     borderBottom: '1px solid #ccc',
     padding: '10px 0',
-    boxSizing: 'border-box' as 'border-box', // Correct type
+    boxSizing: 'border-box' as const, // Use 'as const' instead of type assertion
   },
   container: {
     display: 'flex',
