@@ -1,25 +1,41 @@
 // /app/brokers/inside.tsx
-import React from 'react';
-import Link from 'next/link';
+'use client';
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { db } from "@/app/lib/firebase";
+import { collection, query, where, getDocs } from "firebase/firestore";
+import styles from "@/app/styles/BrokerList.module.css";
 
-const  InsideBrokers = () => {
-  const insideBrokers = [
-    { id: 1, name: "Broker 1" },
-    { id: 2, name: "Broker 2" },
-  ];
+const InsideBrokers = () => {
+  const [brokers, setBrokers] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchBrokers = async () => {
+      const q = query(collection(db, "brokers"), where("type", "==", "in"));
+      const querySnapshot = await getDocs(q);
+      const brokerList = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setBrokers(brokerList);
+    };
+
+    fetchBrokers();
+  }, []);
 
   return (
-    <div>
-      <h1>Outside Brokers</h1>
-      <ul>
-        {insideBrokers.map((broker) => (
-          <li key={broker.id}>
-            <Link href={`/brokers/${broker.id}`}>
-              {broker.name}
-            </Link>
-          </li>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Дотоод Брокерууд</h1>
+      <div className={styles.brokerList}>
+        {brokers.map((broker) => (
+          <Link key={broker.id} href={`/brokers/${broker.id}`} className={styles.brokerItem}>
+            <div className={styles.brokerCard}>
+              <h3 className={styles.brokerName}>{broker.name}</h3>
+              <p className={styles.brokerDescription}>Танилцуулга</p>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

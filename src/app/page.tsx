@@ -9,12 +9,12 @@ const Home: React.FC = () => {
     <div className={styles.container}>
       <Header />
       <section className={styles.introduction}>
-        <h1>Монголын Брокерийн Төвд Тавтай Морилно Уу</h1>
-        <p>Энд та бүхэн бүх брокерийн мэдээллийг олох боломжтой.</p>
+        <h1>Broker.mn Тавтай Морилно Уу</h1>
+        <p>Энд та бүх брокерийн мэдээллийг олох боломжтой.</p>
       </section>
 
       <section className={styles.categories}>
-        <h2>Ангилалууд</h2>
+        <h2>Ангилал</h2>
         <div className={styles.cardContainer}>
           <Link href="/brokers/inside" className={styles.card}>
             <h3>Дотоод Брокерууд</h3>

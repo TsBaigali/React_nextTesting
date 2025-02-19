@@ -1,9 +1,22 @@
+/*
+// src/app/components/Header.tsx
 'use client';
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { auth } from "@/app/lib/firebase"; // Import Firebase auth instance
+import { signOut } from "firebase/auth";
+import styles from "@/app/styles/Header.module.css"; // Import the CSS module
 
 const Header: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
@@ -11,74 +24,151 @@ const Header: React.FC = () => {
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle the search logic here, such as navigating to a search results page
     console.log("Search query submitted:", searchQuery);
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
   return (
-    <header style={styles.header}>
-      <div style={styles.container}>
+    <header className={styles.header}>
+      <div className={styles.container}>
         <Link href="/">
-          <h1 style={styles.logo}>Mongolian Brokers</h1>
+          <h1 className={styles.logo}>Mongolian Brokers</h1>
         </Link>
-        <form onSubmit={handleSearchSubmit} style={styles.searchForm}>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            placeholder="Search brokers..."
-            style={styles.searchInput}
-          />
-          <button type="submit" style={styles.searchButton}>
-            🔍
-          </button>
+        <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+          <div className={styles.searchWrapper}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search brokers..."
+              className={styles.searchInput}
+            />
+            <button type="submit" className={styles.searchButton}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#333"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                className={styles.searchIcon}
+              >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="16" y1="16" x2="20" y2="20" />
+              </svg>
+            </button>
+          </div>
         </form>
+        <div className={styles.authContainer}>
+          {user ? (
+            <>
+              <p className={styles.userName}>Welcome, {user.displayName}!</p>
+              <button onClick={handleLogout} className={styles.authButton}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link href="/auth">
+              <button className={styles.authButton}>Sign In</button>
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
 };
 
-const styles = {
-  header: {
-    backgroundColor: '#fff',
-    width: '100%',
-    borderBottom: '1px solid #ccc',
-    padding: '10px 0',
-    boxSizing: 'border-box' as const, // Use 'as const' instead of type assertion
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    padding: '0 20px',
-  },
-  logo: {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    color: '#333',
-    textDecoration: 'none',
-  },
-  searchForm: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  searchInput: {
-    padding: '8px 12px',
-    borderRadius: '4px',
-    border: '1px solid #ccc',
-    width: '200px',
-    marginRight: '10px',
-  },
-  searchButton: {
-    padding: '8px 12px',
-    borderRadius: '4px',
-    backgroundColor: '#4CAF50',
-    color: '#fff',
-    border: 'none',
-    cursor: 'pointer',
-  },
+export default Header;*/
+'use client';
+
+// src/app/components/Header.tsx
+import { useRouter } from "next/navigation"; // Correct hook for Next.js App Router
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import { auth } from "@/app/lib/firebase";
+import { signOut } from "firebase/auth";
+import styles from "@/app/styles/Header.module.css";
+
+const Header: React.FC = () => {
+  const router = useRouter(); // Always call hooks at the top level
+  const [searchQuery, setSearchQuery] = useState("");
+  const [user, setUser] = useState<any>(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+    }
+  };  
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+  };
+
+  if (!isMounted) return null; // Prevent hydration errors
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Link href="/">
+          <h1 className={styles.logo}>Mongolian Brokers</h1>
+        </Link>
+        <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+          <div className={styles.searchWrapper}>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              placeholder="Search brokers..."
+              className={styles.searchInput}
+            />
+            <button type="submit" className={styles.searchButton}>🔍</button>
+          </div>
+        </form>
+        <div className={styles.authContainer}>
+          {user ? (
+            <>
+              <p className={styles.userName}>Welcome, {user.displayName}!</p>
+              <button onClick={handleLogout} className={styles.authButton}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <Link href="/auth">
+              <button className={styles.authButton}>Sign In</button>
+            </Link>
+          )}
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;
