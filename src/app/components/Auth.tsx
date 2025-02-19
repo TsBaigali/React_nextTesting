@@ -1,5 +1,6 @@
 // components/Auth.tsx
-/*"use client";
+/*
+"use client";
 
 import { auth, googleProvider } from "@/app/lib/firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
@@ -18,6 +19,7 @@ const Auth = () => {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+      console.log("User signed in:", auth.currentUser);
     } catch (error) {
       console.error("Error signing in:", error);
     }
@@ -26,6 +28,7 @@ const Auth = () => {
   const logout = async () => {
     try {
       await signOut(auth);
+      console.log("User signed out");
     } catch (error) {
       console.error("Error signing out:", error);
     }
@@ -49,11 +52,11 @@ export default Auth;*/
 "use client";
 
 import { auth, googleProvider } from "@/app/lib/firebase";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup, signOut, User } from "firebase/auth"; // Import the User type from firebase/auth
 import { useState, useEffect } from "react";
 
 const Auth = () => {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null); // Specify User type from Firebase
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {

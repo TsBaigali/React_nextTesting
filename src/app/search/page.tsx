@@ -111,7 +111,7 @@ const SearchPage = () => {
       try {
         const brokersRef = collection(db, 'brokers');
         const querySnapshot = await getDocs(brokersRef);
-        let allBrokers: Broker[] = [];
+        const allBrokers: Broker[] = [];
         
         querySnapshot.forEach((doc) => {
           allBrokers.push({ id: doc.id, ...doc.data() } as Broker);
