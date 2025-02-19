@@ -1,20 +1,32 @@
-
 "use client";
-
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { db, auth } from "@/app/lib/firebase";
 import { doc, getDoc, collection, addDoc, query, orderBy, getDocs } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth"; // Import Firebase Auth method
+import { onAuthStateChanged, User } from "firebase/auth"; // Import Firebase Auth method
 import styles from "@/app/styles/BrokerDetail.module.css";
+
+// Define types
+interface Broker {
+  name: string;
+  type: string;
+  rating: number;
+  platforms: string[]; // Assuming platforms is an array of strings
+}
+
+interface Rating {
+  username: string;
+  rating: number;
+  comment: string;
+}
 
 const BrokerDetail = () => {
   const { id } = useParams();
-  const [broker, setBroker] = useState<any>(null);
-  const [ratings, setRatings] = useState<any[]>([]);
-  const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
-  const [user, setUser] = useState<any>(null); // Track the current user
+  const [broker, setBroker] = useState<Broker | null>(null); // Updated type for broker
+  const [ratings, setRatings] = useState<Rating[]>([]); // Updated type for ratings
+  const [rating, setRating] = useState<number>(0); // Updated type for rating
+  const [comment, setComment] = useState<string>(""); // Updated type for comment
+  const [user, setUser] = useState<User | null>(null); // Updated type for user
   const [username, setUsername] = useState<string>(""); // Track the username
 
   useEffect(() => {
@@ -38,7 +50,7 @@ const BrokerDetail = () => {
       const docRef = doc(db, "brokers", id as string);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        setBroker(docSnap.data());
+        setBroker(docSnap.data() as Broker); // Cast to Broker type
       } else {
         setBroker(null);
       }
@@ -49,7 +61,7 @@ const BrokerDetail = () => {
       const ratingsRef = collection(db, "brokers", id as string, "ratings");
       const q = query(ratingsRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const ratingsData = querySnapshot.docs.map((doc) => doc.data());
+      const ratingsData = querySnapshot.docs.map((doc) => doc.data() as Rating); // Cast to Rating type
       setRatings(ratingsData);
     };
 
@@ -80,7 +92,7 @@ const BrokerDetail = () => {
       // Re-fetch ratings after submission
       const q = query(ratingsRef, orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
-      const newRatingsData = querySnapshot.docs.map((doc) => doc.data());
+      const newRatingsData = querySnapshot.docs.map((doc) => doc.data() as Rating); // Cast to Rating type
       setRatings(newRatingsData);
     } catch (error) {
       console.error("Error submitting rating:", error);
@@ -95,7 +107,7 @@ const BrokerDetail = () => {
       <div className={styles.card}>
         <p><strong>Төрөл:</strong> {broker.type}</p>
         <p><strong>Үнэлгээ:</strong> ⭐ {broker.rating}</p>
-        <p><strong>Платформууд:</strong> {broker.platforms}</p>
+        <p><strong>Платформууд:</strong> {broker.platforms}</p> {/* Added join for array */}
       </div>
 
       <div className={styles.ratingForm}>
@@ -152,9 +164,3 @@ const BrokerDetail = () => {
 };
 
 export default BrokerDetail;
-
-
-
-
-
- 
