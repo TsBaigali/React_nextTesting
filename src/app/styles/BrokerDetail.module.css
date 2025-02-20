@@ -1,135 +1,115 @@
-/* Resetting some default styles */
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-.body {
-  font-family: 'Arial', sans-serif;
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.logoContainer {
+  width: 120px;
+  height: 120px;
+}
+
+.headerInfo {
+  flex-grow: 1;
+}
+
+.headerInfo h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.headerRating {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Tabs for navigation */
+.tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+
+.tab:hover {
+  background-color: #e0e0e0;
+}
+
+.infoSection {
   background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+}
+
+.infoSection h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.infoSection ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.infoSection li {
+  margin-bottom: 10px;
+}
+
+.infoSection strong {
   color: #333;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.card {
-  background-color: #ffffff;
+/* Reviews Section */
+.reviewsContainer {
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
 }
 
-.card p {
-  font-size: 1.1rem;
-  margin: 10px 0;
+.reviewsList {
+  margin-top: 40px;
 }
 
-.ratingForm {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 40px;
-}
-
-.ratingForm h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #34495e;
-}
-
-.ratingForm label {
-  font-size: 1rem;
-  display: block;
-  margin-bottom: 8px;
-  color: #7f8c8d;
-}
-
-.ratingForm input,
-.ratingForm textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #bdc3c7;
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #34495e;
-  background-color: #ecf0f1;
-}
-
-.ratingForm button {
-  background-color: #3498db;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1rem;
-}
-
-.ratingForm button:hover {
-  background-color: #2980b9;
-}
-
-.ratingsList {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.ratingsList h2 {
-  font-size: 1.8rem;
+.reviewsList h2 {
   margin-bottom: 20px;
-  color: #34495e;
 }
 
-.ratingsList ul {
+.reviewsList ul {
   list-style-type: none;
+  padding: 0;
 }
 
-.ratingsList li {
-  background-color: #f4f6f7;
-  padding: 12px;
-  margin-bottom: 12px;
+.reviewItem {
+  background-color: #f1f1f1;
+  padding: 15px;
   border-radius: 8px;
+  margin-bottom: 15px;
 }
 
-.ratingsList li p {
-  font-size: 1.1rem;
-  color: #7f8c8d;
+.reviewItem p {
+  margin: 0;
+  font-size: 16px;
 }
 
-.ratingsList li strong {
-  font-size: 1.2rem;
-  color: #2c3e50;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .card {
-    margin-bottom: 30px;
-  }
-
-  .ratingForm button {
-    width: 100%;
-  }
+.reviewItem strong {
+  color: #333;
 }
