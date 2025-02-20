@@ -291,33 +291,33 @@ const BrokerDetail = () => {
 
       {/* Broker Info Section (Tabs-style) */}
       <div className={styles.tabs}>
-        <div className={styles.tab} onClick={() => setActiveTab("basic")}>Basic Info</div>
-        <div className={styles.tab} onClick={() => setActiveTab("contact")}>Contact Info</div>
-        <div className={styles.tab} onClick={() => setActiveTab("software")}>Related Software</div>
+        <div className={styles.tab} onClick={() => setActiveTab("basic")}>Ерөнхий мэдээлэл</div>
+        <div className={styles.tab} onClick={() => setActiveTab("contact")}>Холбоо барих</div>
+        <div className={styles.tab} onClick={() => setActiveTab("software")}>Холбоотой программ хангамж</div>
       </div>
 
       {/* Broker Detail Sections */}
       {activeTab === "basic" && (
         <div className={styles.infoSection}>
-          <h2>Basic Information</h2>
+          <h2>Ерөнхий мэдээлэл</h2>
           <ul>
-            <li><strong>Country:</strong> {broker.country}</li>
+            <li><strong>Улс:</strong> {broker.country}</li>
             <li><strong>Regulation:</strong> {broker.regulation}</li>
-            <li><strong>Registered Region:</strong> {broker.registeredRegion}</li>
-            <li><strong>Operating Period:</strong> {broker.operatingPeriod}</li>
-            <li><strong>Company Name:</strong> {broker.companyName}</li>
-            <li><strong>Contact:</strong> {broker.contact}</li>
+            <li><strong>Бүртгэгдсэн бүс нутаг:</strong> {broker.registeredRegion}</li>
+            <li><strong>Үйл ажиллагааны хугацаа:</strong> {broker.operatingPeriod}</li>
+            <li><strong>Компаний нэр:</strong> {broker.name}</li>
+            <li><strong>Холбоо барих:</strong> {broker.contact}</li>
             <li><strong>Website:</strong> {broker.website ? <Link href={broker.website}>{broker.website}</Link> : "N/A"}</li>
-            <li><strong>Facebook:</strong> {broker.facebook ? <Link href={broker.facebook}>Facebook Page</Link> : "N/A"}</li>
+            <li><strong>Facebook:</strong> {broker.facebook ? <Link href={broker.facebook}>ҮФэйсбүүкээрж</Link> : "N/A"}</li>
           </ul>
         </div>
       )}
 
       {activeTab === "contact" && (
         <div className={styles.infoSection}>
-          <h2>Contact Information</h2>
+          <h2>Холбогдох мэдээлэл</h2>
           <ul>
-            <li><strong>Phone:</strong> {broker.contact}</li>
+            <li><strong>Улс:</strong> {broker.contact}</li>
             <li><strong>Website:</strong> {broker.website ? <Link href={broker.website}>{broker.website}</Link> : "N/A"}</li>
             <li><strong>Facebook:</strong> {broker.facebook ? <Link href={broker.facebook}>Facebook</Link> : "N/A"}</li>
           </ul>
@@ -326,40 +326,41 @@ const BrokerDetail = () => {
 
       {activeTab === "software" && (
         <div className={styles.infoSection}>
-          <h2>Related Software</h2>
+          <h2>Холбоотой программ хангамж</h2>
           <ul>
-            {broker.relatedSoftware.map((software, index) => (
-              <li key={index}>{software}</li>
-            ))}
+          {(broker.relatedSoftware || []).map((software, index) => (
+            <li key={index}>{software}</li>
+          ))}
+
           </ul>
         </div>
       )}
 
       {/* Rating & Reviews Section */}
       <div className={styles.reviewsContainer}>
-        <h2>Rate & Review</h2>
+        <h2>Үнэлгээ & Сэтгэгдэл</h2>
         {user ? (
           <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
-              <label>Rating:</label>
+              <label>Үнэлгээ:</label>
               <input type="number" value={rating} min="1" max="5" onChange={(e) => setRating(Number(e.target.value))} required />
             </div>
             <div className={styles.formGroup}>
-              <label>Comment:</label>
+              <label>Сэтгэгдэл:</label>
               <textarea value={comment} onChange={(e) => setComment(e.target.value)} required />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit">Нийтлэх</button>
           </form>
         ) : (
-          <p>Please log in to leave a review.</p>
+          <p>Шүүмж үлдээхийн тулд нэвтэрнэ үү.</p>
         )}
       </div>
 
       {/* Display Ratings */}
       <div className={styles.reviewsList}>
-        <h2>Reviews</h2>
+        <h2>Үнэлгээ</h2>
         {ratings.length === 0 ? (
-          <p>No reviews yet.</p>
+          <p>Одоогоор шүүмж алга</p>
         ) : (
           <ul>
             {ratings.map((ratingData, index) => (
