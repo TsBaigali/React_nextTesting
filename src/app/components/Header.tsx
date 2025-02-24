@@ -135,7 +135,7 @@ const Header: React.FC = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/">
-          <h1 className={styles.logo}>Mongolian Brokers</h1>
+          <h1 className={styles.logo}>BrokerMN</h1>
         </Link>
         <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
           <div className={styles.searchWrapper}>
@@ -143,7 +143,7 @@ const Header: React.FC = () => {
               type="text"
               value={searchQuery}
               onChange={handleSearchChange}
-              placeholder="Search brokers..."
+              placeholder="Брокер хайх..."
               className={styles.searchInput}
             />
             <button type="submit" className={styles.searchButton}>🔍</button>
@@ -152,14 +152,14 @@ const Header: React.FC = () => {
         <div className={styles.authContainer}>
           {user ? (
             <>
-              <p className={styles.userName}>Welcome, {user.displayName}!</p>
+              <p className={styles.userName}>Тавтай морил, {user.displayName}!</p>
               <button onClick={handleLogout} className={styles.authButton}>
-                Sign Out
+                Гарах
               </button>
             </>
           ) : (
             <Link href="/auth">
-              <button className={styles.authButton}>Sign In</button>
+              <button className={styles.authButton}>Нэвтрэх</button>
             </Link>
           )}
         </div>

@@ -1,60 +1,152 @@
+/* 🔍 Search Page Container */
 .searchPage {
-    max-width: 800px;
-    margin: 40px auto;
+  max-width: 1000px; /* Increased width */
+  margin: 50px auto;
+  padding: 25px;
+  text-align: center;
+}
+
+/* 📌 Title Styling */
+.searchPage h1 {
+  font-size: 32px; /* Bigger title */
+  margin-bottom: 25px;
+  font-weight: 800;
+  color: #00ff99; /* Neon green for modern contrast */
+}
+
+/* 📋 Broker List */
+.brokerList {
+  list-style: none;
+  padding: 0;
+}
+
+/* 🏦 Broker Item */
+.brokerItem {
+  background: #262a38; /* Darker, modern card */
+  border: 2px solid #444; /* Slightly thicker border */
+  border-radius: 16px; /* Bigger border radius */
+  padding: 30px; /* More padding */
+  margin: 18px 0;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+/* 🚀 Hover Effect */
+.brokerItem:hover {
+  transform: scale(1.05); /* Slightly bigger hover effect */
+  box-shadow: 0 6px 16px rgba(0, 255, 153, 0.4);
+}
+
+/* 🏷️ Broker Title */
+.brokerItem h3 {
+  font-size: 24px; /* Bigger title */
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* 📄 Broker Description */
+.brokerItem p {
+  font-size: 16px; /* Bigger text */
+  color: #cccccc;
+  margin: 8px 0;
+}
+
+/* 🔗 Broker Link */
+.brokerItem a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #00ff99;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.brokerItem a:hover {
+  color: #ff0095;
+  text-decoration: underline;
+}
+
+/* ⏳ Loading & No Results */
+.searchPage p {
+  font-size: 18px; /* Bigger text */
+  color: #bbbbbb;
+  margin-top: 25px;
+}
+
+/* 📱 Responsive Tweaks */
+@media (max-width: 768px) {
+  .searchPage {
     padding: 20px;
-    text-align: center;
   }
-  
-  .searchPage h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .brokerList {
-    list-style: none;
-    padding: 0;
-  }
-  
+
   .brokerItem {
-    background: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    transition: box-shadow 0.3s ease;
-    text-align: left;
+    padding: 20px;
   }
-  
-  .brokerItem:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔍 Search Input Container */
+.searchInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 550px; /* Bigger width */
+  margin: 25px auto;
+}
+
+/* 📌 Search Input Field */
+.searchInput {
+  width: 100%;
+  padding: 16px 22px; /* Bigger padding */
+  border-radius: 30px; /* More rounded */
+  border: 3px solid #00ff99; /* Thicker border */
+  font-size: 18px; /* Bigger text */
+  background-color: #1e2230; /* Slightly darker input */
+  color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  padding-right: 55px; /* Space for search icon */
+}
+
+/* 🚀 Focus Effect */
+.searchInput:focus {
+  border-color: #ff0095; /* Pink border on focus */
+  box-shadow: 0 0 15px rgba(255, 0, 149, 0.6);
+  outline: none;
+}
+
+/* 🔍 Search Icon Button */
+.searchButton {
+  position: absolute;
+  right: 18px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+}
+
+/* 🔎 Search Icon */
+.searchIcon {
+  stroke: #00ff99; /* Neon green */
+  width: 28px;
+  height: 28px;
+  transition: stroke 0.3s ease;
+}
+
+/* ✨ Hover Effect */
+.searchButton:hover .searchIcon {
+  stroke: #ff0095;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .searchInputWrapper {
+    max-width: 350px;
   }
-  
-  .brokerItem h3 {
-    font-size: 18px;
-    margin: 0 0 5px;
-  }
-  
-  .brokerItem p {
-    font-size: 14px;
-    color: #666;
-    margin: 5px 0;
-  }
-  
-  /* Link styling */
-  .brokerItem a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-  }
-  
-  .brokerItem a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Loading and No Results */
-  .searchPage p {
+
+  .searchInput {
     font-size: 16px;
-    color: #555;
-    margin-top: 20px;
   }
-  
+}

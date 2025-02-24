@@ -1,282 +1,138 @@
-/*.cardContainer {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-  }
-  
-  .card {
-    position: relative;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #ddd;
-    overflow: hidden;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    border-color: #0070f3;
-  }
-
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .card:hover::before {
-    opacity: 1;
-  }
-  
-
-  .cardOverlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .card:hover .cardOverlay {
-    opacity: 1;
-  }
-
-
-.introduction {
-  width: 100vw;  
-  height: 80vh;  
+/* 📌 Container for Page Layout */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  background: #0b0d15;
+  color: #a2a5b3;
   text-align: center;
-  background: linear-gradient(to right, #987654, #654321);
-  color: #fff; 
-  padding: 40px;
+  padding: 20px;
+}
+
+/* 🌟 Section Styling */
+.introduction, .categories {
+  margin-bottom: 40px;
 }
 
 .introduction h1 {
-  font-size: 3rem; 
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.introduction p {
-  font-size: 1.5rem; 
-  max-width: 800px;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .introduction {
-    height: 60vh;  
-    padding: 20px;
-  }
-
-  .introduction h1 {
-    font-size: 2rem;
-  }
-
-  .introduction p {
-    font-size: 1.2rem;
-  }
-}*/
-/* styles/Home.module.css */
-
-/* styles/Home.module.css */
-
-/* Category Section */
-/* styles/Home.module.css */
-
-/* styles/Home.module.css */
-
-/* Category Section */
-.categories {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-  text-align: center;
-  padding: 60px 0;  /* Adjust padding for more space */
-  background: #f7f7f7; /* Light background for the category section */
-  border-radius: 10px;
+  color: #fff;
+  font-size: 2rem;
 }
 
 .categories h2 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: #987654;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-size: 1.8rem;
+  color: #fff;
 }
 
+/* 🔥 Card Container */
 .cardContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  width: 100%; /* Adjust the width to 90% for better card alignment */
-  max-width: 1200px; /* Ensure the card container does not stretch too far */
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
 }
 
+/* 🔹 Animated Conic Border Effect */
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* 🃏 Card Styles */
 .card {
   position: relative;
-  background-color: #fff;
+  background: #1c1f2b;
   border-radius: 12px;
-  padding: 35px;
-  width: 32%; /* Take up more space - 3 cards per row on desktop */
-  text-align: center;
-  text-decoration: none;
-  color: black;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Larger shadow for more depth */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  overflow: hidden;
-  border: 1px solid #ddd;
-}
-
-.card h3 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: #987654;
-  margin-bottom: 20px;
-}
-
-.card p {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  background-color: #987654; /* Background color change on hover */
-  color: white;
-}
-
-.card:hover .cardOverlay {
-  opacity: 1;
-}
-
-.cardOverlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card:hover .cardOverlay {
-  opacity: 1;
-}
-
-@media (max-width: 1024px) {
-  .card {
-    width: 48%; /* 2 cards per row on medium screens */
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: 90%; /* 1 card per row on small screens */
-    margin-bottom: 20px;
-  }
-}
-
-
-
-/* styles/Home.module.css */
-
-.introduction {
-  width: 100vw;  /* Full-width */
-  height: 80vh;  /* Almost full height */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(to right, #987654, #654321);  /* Elegant gradient */
-  color: #fff;  /* White text for contrast */
-  padding: 40px;
-}
-
-.introduction h1 {
-  font-size: 3rem; /* Large, impactful title */
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.introduction p {
-  font-size: 1.5rem; /* Professional yet readable */
-  max-width: 900px;  /* Increase max-width for readability */
-  line-height: 1.8;  /* Increased line-height for better readability */
-  opacity: 0.9;
-}
-
-@media (max-width: 768px) {
-  .introduction {
-    height: 60vh;  /* Adjust for smaller screens */
-    padding: 20px;
-  }
-
-  .introduction h1 {
-    font-size: 2rem;
-  }
-
-  .introduction p {
-    font-size: 1.2rem;
-  }
-}
-/* styles/Home.module.css */
-
-.card {
-  position: relative;
-  background-color: white;
-  border-radius: 12px;
-  padding: 25px;
+  padding: 2em;
   width: 280px;
   text-align: center;
+  color: #fff;
   text-decoration: none;
-  color: black;
-  transition: transform 0.4s ease, box-shadow 0.3s ease, border 0.3s ease;
-  border: 1px solid #ddd;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  border: 3px solid transparent;
+  background-clip: padding-box;
 }
 
-/* Adding a scaling effect when hovering */
+/* 🚀 Hover Effect */
 .card:hover {
-  transform: translateY(-8px) scale(1.05); /* Adding slight zoom effect */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  border-color: #987654;
+  transform: scale(1.05);
+}
+
+/* 🌈 Animated Border */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 15px;
+  padding: 3px;
+  background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  z-index: -1;
+  animation: spin 3s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+/* 🎇 Blurred Glow Effect */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 18px;
+  background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+  filter: blur(1.5rem);
+  opacity: 0.5;
+  z-index: -2;
+  animation: spin 3s linear infinite;
+}
+
+/* 🌀 Animation Keyframes */
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* 💡 Card Overlay (For Hover Effects) */
+.cardOverlay {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .cardOverlay {
+  opacity: 1;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 1024px) {
+  .card {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
 }

@@ -1,113 +1,166 @@
-/* /app/styles/BrokerList.module.css */
+/* /app/styles/BrokerList.module.css - Dark Futuristic Theme */
 
 .container {
-  padding: 20px;
-  background-color: #f5f7fa;
+  padding: 25px;
+  background-color: #12151c; /* Dark background */
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* 🌟 Title */
 .title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #222;
-  margin-bottom: 30px;
+  color: #00ff99; /* Neon Green for a futuristic feel */
+  margin-bottom: 35px;
+  text-transform: uppercase;
 }
 
+/* 📌 Broker List */
 .brokerList {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
+  gap: 25px;
+  width: 100%;
+  max-width: 1300px;
 }
 
+/* 🔹 Broker Item */
 .brokerItem {
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 
+/* 🏆 Broker Card */
 .brokerCard {
-  background-color: white;
+  position: relative;
+  background: #1c1f2b; /* Solid background */
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  transition: all 0.3s ease;
+  padding: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid #ddd;
+  box-shadow: 0 6px 15px rgba(0, 255, 153, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
 }
 
+/* 🔥 Animated Border */
+.brokerCard::after {
+  content: "";
+  position: absolute;
+  inset: -0.5px; /* Expands to cover the border */
+  background: conic-gradient(
+    from var(--angle),
+    #ff4545,
+    #00ff99,
+    #006aff,
+    #ff0095,
+    #ff4545
+  );
+  border-radius: 15px;
+  z-index: -1; /* Places it behind the card */
+  animation: spin 2s linear infinite;
+  padding: 3px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+}
+
+/* 🌀 Animation Keyframes */
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* 🏆 Hover Effects */
 .brokerCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  border-color: #007bff;
+  transform: translateY(-7px);
+  box-shadow: 0 8px 20px rgba(0, 255, 153, 0.4);
 }
 
+/* 📌 Broker Logo */
 .brokerLogo {
-  width: 80px;
-  height: 80px;
+  width: 180px;
+  height: 180px;
   border-radius: 10px;
   object-fit: contain;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  background-color: #1c1f2b;
+  padding: 10px;
 }
 
+/* 🏆 Broker Details */
 .brokerName {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 8px;
 }
 
 .brokerCategory {
   font-size: 1rem;
-  color: #666;
-  margin-bottom: 10px;
+  color: #bbbbbb;
+  margin-bottom: 12px;
 }
 
+/* 🔥 Trust Score */
 .brokerTrustScore {
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 10px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  width: fit-content;
 }
 
 .highTrust {
-  background-color: #d4edda;
-  color: #155724;
+  background-color: rgba(0, 255, 153, 0.2);
+  color: #00ff99;
 }
 
 .mediumTrust {
-  background-color: #fff3cd;
-  color: #856404;
+  background-color: rgba(255, 204, 0, 0.2);
+  color: #ffcc00;
 }
 
 .lowTrust {
-  background-color: #f8d7da;
-  color: #721c24;
+  background-color: rgba(255, 0, 0, 0.2);
+  color: #ff4444;
 }
 
+/* ⭐ Rating */
 .brokerRating {
   color: #ffcc00;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.4rem;
+  margin-bottom: 12px;
 }
 
+/* 📌 Call to Action */
 .brokerCardFooter {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  font-size: 0.9rem;
+  margin-top: 12px;
+  padding: 12px;
+  background: linear-gradient(145deg, #00ff99, #009966);
+  color: #000000;
+  font-size: 1rem;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 6px;
   width: 100%;
   text-align: center;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .brokerCardFooter:hover {
-  background-color: #0056b3;
+  background: linear-gradient(145deg, #00cc88, #007755);
+  box-shadow: 0 4px 10px rgba(0, 255, 153, 0.3);
 }

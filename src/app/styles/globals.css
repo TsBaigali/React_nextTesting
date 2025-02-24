@@ -1,18 +1,67 @@
-.footer {
-  text-align: center;
-  padding: 15px;
-  background-color: #f1f1f1;
-  color: #333;
-  margin-top: auto;
+/* 📌 Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-/* Add to your global styles (e.g., globals.css) */
-body {
-  background-color: #f5f5f5; /* Light background for the body */
-  padding-top: 80px; /* To prevent the content from hiding under the fixed header */
-}
-/* Add this to your global styles (e.g., globals.css) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
+/* 🌍 Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* 🏠 Body Styling */
 body {
   font-family: 'Poppins', sans-serif;
+  background-color: #1c1f2b; /* Darker modern background */
+  color: #f0f0f0;
+  padding-top: 80px; /* Prevents content from hiding under fixed header */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 📌 Footer Styling */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #262a38; /* Darker footer */
+  color: #bbb; /* Softer text for readability */
+  border-top: 1px solid #444;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+/* 🔗 Footer Links */
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footerLinks li {
+  display: inline;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  color: #00ff99; /* Neon green for contrast */
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #ff0095; /* Vibrant hover effect */
+  text-decoration: underline;
+}
+
+/* 📱 Responsive Tweaks */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+  }
+
+  .footer {
+    padding: 15px;
+    font-size: 12px;
+  }
 }

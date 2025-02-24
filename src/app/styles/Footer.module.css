@@ -1,29 +1,52 @@
+/* 📌 Footer Container */
 .footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f8f8f8;
-    color: #333;
-    border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 20px;
+  background: #1c1f2b; /* Dark background to match card UI */
+  color: #a2a5b3;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  font-size: 1rem;
+  position: relative;
+  width: 100%;
+}
+
+/* 🔹 Footer Links */
+.footerLinks {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* 🏷️ Footer Links Styling */
+.footerLinks li {
+  display: inline;
+}
+
+.footerLinks a {
+  text-decoration: none;
+  color: #00ff99;
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* ✨ Hover Effect */
+.footerLinks a:hover {
+  color: #ff0095;
+  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 0.9rem;
+    padding: 15px;
   }
-  
+
   .footerLinks {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    gap: 15px;
   }
-  
-  .footerLinks li {
-    display: inline;
-  }
-  
-  .footerLinks a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .footerLinks a:hover {
-    text-decoration: underline;
-  }
-  
+}

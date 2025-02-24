@@ -1,19 +1,20 @@
-/* styles/Header.module.css */
+/* 📌 Header Container */
 .header {
-  background-color: white; 
+  background: #1c1f2b; /* Dark theme for a modern look */
   width: 100%;
-  padding: 10px 0;
+  padding: 12px 0;
   box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 800;
+  z-index: 1000; /* Increased z-index for better layering */
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* More prominent shadow */
 }
 
+/* 🔹 Main Container */
 .container {
   display: flex;
   justify-content: space-between;
@@ -23,16 +24,27 @@
   padding: 0 20px;
 }
 
+/* 🏷️ Logo */
 .logo {
   font-family: 'Poppins', sans-serif;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
-  color: #000000;
+  color: #00ff99; /* Vibrant neon green */
   text-decoration: none;
   flex: 1;
-  text-align: center;
+  text-align: left;
+  transition: color 0.3s ease;
 }
 
+.logo:hover {
+  color: #ff0095; /* Cool hover effect */
+}
+
+a .logo {
+  text-decoration: none;
+}
+
+/* 🔎 Search Bar */
 .searchForm {
   display: flex;
   justify-content: center;
@@ -47,19 +59,23 @@
 
 .searchInput {
   padding: 12px 20px;
-  border-radius: 6px; /* Slightly more angular */
-  border: 1px solid #ddd;
+  border-radius: 6px;
+  border: 1px solid #444;
   width: 300px;
   font-size: 16px;
+  background: #262a38;
+  color: #f0f0f0;
   padding-right: 40px; /* Space for the icon */
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s;
 }
 
 .searchInput:focus {
-  border-color: #007bff; /* Focus effect */
+  border-color: #ff9d00; /* Highlight effect */
   outline: none;
+  background: #2f3343;
 }
 
+/* 🔍 Search Button */
 .searchButton {
   position: absolute;
   right: 10px;
@@ -67,40 +83,69 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 .searchIcon {
-  stroke: #333; /* Dark stroke for modern look */
-  width: 20px;
-  height: 20px;
+  stroke: #00ff99; /* Neon effect */
+  width: 22px;
+  height: 22px;
+  transition: stroke 0.3s ease;
 }
 
+.searchButton:hover .searchIcon {
+  stroke: #ff0095;
+}
+
+/* 👤 Authentication */
 .authContainer {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   font-size: 14px;
 }
 
 .userName {
   font-size: 16px;
-  color: #fff;
+  color: #f0f0f0;
 }
 
+/* 🔘 Login / Signup Button */
 .authButton {
-  padding: 8px 20px;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #007bff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: #00ff99;
+  color: #000;
+  font-weight: 600;
   border: none;
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .authButton:hover {
-  background-color: #f1f1f1;
-  color: #0056b3;
+  background: #ff0095;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 0;
+  }
+
+  .searchInput {
+    width: 200px;
+  }
+
+  .authContainer {
+    gap: 10px;
+  }
+
+  .authButton {
+    padding: 6px 15px;
+    font-size: 12px;
+  }
 }
