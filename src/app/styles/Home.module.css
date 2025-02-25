@@ -91,7 +91,7 @@
   inset: -8px;
   border-radius: 18px;
   background: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
-  filter: blur(1.5rem);
+  filter: blur(20rem);
   opacity: 0.5;
   z-index: -2;
   animation: spin 3s linear infinite;

@@ -1,11 +1,15 @@
 import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import News from "./components/News"
 import Link from "next/link";
 import styles from "./styles/Home.module.css";
+import { ReactLenis } from "lenis/react";
+import SmokeEffect from "./components/SmokeEffect";
 
 const Home: React.FC = () => {
   return (
+    <ReactLenis root>
     <div className={styles.container}>
       <Header />
       <section className={styles.introduction}>
@@ -31,9 +35,19 @@ const Home: React.FC = () => {
           </Link>
         </div>
       </section>
-
+      <News />
+      <div className="relative min-h-screen bg-black">
+      <h1 className="text-white text-center text-4xl pt-20">Mouse Smoke Effect</h1>
+      <div>
+      <SmokeEffect />
+      <h1 style={{ position: "absolute", top: "20px", left: "50px", color: "white" }}>
+        WebGL Smoke Simulation
+      </h1>
+    </div>
+    </div>
       <Footer />
     </div>
+    </ReactLenis>
   );
 };
 
