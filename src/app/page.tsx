@@ -1,13 +1,12 @@
 "use client"
 import React, { useEffect } from "react";
 import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Link from "next/link";
 import styles from "./styles/Home.module.css";
 import { ReactLenis } from "lenis/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { start } from "repl";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
