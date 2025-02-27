@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+ /* min-height: 100vh; */
   background: #0b0d15;
   color: #a2a5b3;
   text-align: center;
@@ -13,12 +13,8 @@
 
 /* 🌟 Section Styling */
 .introduction, .categories {
-  margin-bottom: 40px;
-}
-
-.introduction h1 {
-  color: #fff;
-  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: 40px;
 }
 
 .categories h2 {
@@ -53,6 +49,7 @@
   padding: 2em;
   width: 280px;
   text-align: center;
+  margin-bottom: 80px;
   color: #fff;
   text-decoration: none;
   font-size: 1.2rem;
@@ -135,4 +132,19 @@
     width: 90%;
     margin-bottom: 20px;
   }
+}
+.authButton {
+  background-color: #0070f3; /* Blue color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.authButton:hover {
+  background-color: #0056b3; /* Darker blue */
 }
